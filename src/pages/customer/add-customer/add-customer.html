@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Add Customer</ion-title>
+    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <form novalidate [formGroup]="addCustomerForm" (ngSubmit)="addCustomer(addCustomerForm)">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Name</ion-label>
+        <ion-input type="text" formControlName="Name"></ion-input>
+      </ion-item>
+      <ion-row radio-group formControlName="Gender">
+        <ion-col>
+          <ion-item>
+            <ion-label>Male</ion-label>
+            <ion-radio value="Male"></ion-radio>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label>Female</ion-label>
+            <ion-radio value="Female"></ion-radio>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="email" formControlName="Email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Cell</ion-label>
+        <ion-input type="text" formControlName="Cell"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-list formGroupName="Address">
+      <ion-item>
+        <ion-label floating>Door No</ion-label>
+        <ion-input type="text" formControlName="DoorNo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Floor No</ion-label>
+        <ion-input type="text" formControlName="FloorNo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Apartment Name</ion-label>
+        <ion-input type="text" formControlName="ApartmentName" (keyup)="autoApartmentName(addCustomerForm.controls['Address'].value.ApartmentName)"></ion-input>
+      </ion-item>
+       <ion-list inset>
+        <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
+          {{ item }}
+        </button> 
+      </ion-list> 
+      <ion-item>
+        <ion-label floating>Street</ion-label>
+        <ion-input type="text" formControlName="Street"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Landmark</ion-label>
+        <ion-input type="text" formControlName="Landmark"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>City</ion-label>
+        <ion-input type="text" formControlName="City"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>State</ion-label>
+        <ion-input type="text" formControlName="State"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Pin</ion-label>
+        <ion-input type="text" formControlName="Pin"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div padding>
+      <button [disabled]="!addCustomerForm.valid" type="submit" ion-button block>Submit</button>
+    </div>
+  </form>
+</ion-content>

@@ -1,0 +1,16 @@
+<ion-menu [content]="mycontent">
+    <ion-content>
+        <ion-list>
+            <ion-list-header>
+                Options
+            </ion-list-header>
+            <button ion-item>Invoices</button>
+            <button ion-item>Products</button>
+            <button ion-item menuClose (click)="openCustomerPage()">Customers</button>
+            <button ion-item>Appointments</button>
+            <button ion-item>Users</button>
+            <button ion-item>Accounts</button>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+<ion-nav #mycontent [root]="rootPage"></ion-nav>
